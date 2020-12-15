@@ -13,6 +13,7 @@ export class Json2csvComponent implements OnInit {
   constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.gerarTabela();
   }
 
   jsonCSV() {
@@ -141,6 +142,17 @@ export class Json2csvComponent implements OnInit {
     }
 
     this.inserirTextArea(vetColunaFormatado, vetLinha);
+  }
+
+  gerarTabela(){
+    var tabela = document.createElement("table");
+    var cabecalho = document.createElement("thead");
+    var corpo = document.createElement("tbody");
+    
+    tabela.appendChild(cabecalho);
+    tabela.appendChild(corpo);
+    
+    document.getElementById("tabela").appendChild(tabela);
   }
 
   Limpar() {

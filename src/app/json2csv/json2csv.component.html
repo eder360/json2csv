@@ -1,0 +1,32 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <form ngNativeValidate class="form-horizontal" role="form">
+        <div class="content-title">
+            <h2 class="control-label" style="color: #4169e1;text-align: center;"> Conversor JSON2CSV</h2>
+        </div>
+
+        <div class="card">
+            <div class="row">
+                <div class="form-group" class="col-sm-6">
+                    <label for="textArea1" style="color: #4169e1; font-size: large;">Entrada:</label>
+                    <textarea class="form-control" id="textArea1" rows="15"></textarea>
+                </div>
+                <div class="form-group" class="col-sm-6">
+                    <label for="textArea2" style="color: #4169e1; font-size: large;">Saída:</label>
+                    <textarea class="form-control" id="textArea2" rows="15" readonly></textarea>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" (click)="jsonCSV()">CONVERTER</button>
+    </form> <!-- /form -->
+</div> <!-- ./container -->

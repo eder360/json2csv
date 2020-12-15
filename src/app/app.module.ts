@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { Json2csvComponent } from './json2csv/json2csv.component';
@@ -15,10 +16,11 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
-    preventDuplicates: true,
-  }), // ToastrModule added
+      preventDuplicates: true
+    }), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

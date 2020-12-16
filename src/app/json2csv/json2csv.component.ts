@@ -98,6 +98,7 @@ export class Json2csvComponent implements OnInit {
     }
   }
 
+  // Funcao responsavel por converter para CSV caso as colunas sejam diferentes
   convertePropDif(jsonVal) {
     // Vetor auxiliar para salvar os dados das colunas
     let vetColunas = [];
@@ -144,6 +145,7 @@ export class Json2csvComponent implements OnInit {
         });
         // Contador para verificar colunas em branco
         let contProp = Object.keys(jsonVal[i]);
+        // Adicona o separador de dados
         if (cont == contProp.length) {
           linha = linha + ',';
         }

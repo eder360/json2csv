@@ -38,7 +38,13 @@ export class Json2csvComponent implements OnInit {
     }
 
     // Vetor auxiliar para validar as propriedades do objeto
-    var validador = Object.keys(jsonVal[0]);
+    try {
+      var validador = Object.keys(jsonVal[0]);
+    }
+    catch (e) {
+      this.toastr.warning('Não é possível a conversão de estruturas aninhadas.');
+      return;
+    }
 
     // Vetor que obtem os valores dos atributos para conversão
     let vetValores = [];
@@ -124,6 +130,7 @@ export class Json2csvComponent implements OnInit {
         // Contador que verifica se uma linha tem todas as colunas
         let cont = 0;
 
+        // Converte para CSV
         Object.keys(jsonVal[i]).forEach((key) => {
           if (vetColunaFormatado[j] == key) {
             if (isNaN(jsonVal[i][key])) {
@@ -135,7 +142,9 @@ export class Json2csvComponent implements OnInit {
             cont++;
           }
         });
-        if (cont == vetColunaFormatado.length - 1) {
+        // Contador para verificar colunas em branco
+        let contProp = Object.keys(jsonVal[i]);
+        if (cont == contProp.length) {
           linha = linha + ',';
         }
       }
@@ -161,8 +170,8 @@ export class Json2csvComponent implements OnInit {
   Limpar() {
     this.textArea1 = "";
     this.textArea2 = "";
-    this.columnDefs =  [];
-    this.rowData  = [];
+    this.columnDefs = [];
+    this.rowData = [];
   }
 
 }

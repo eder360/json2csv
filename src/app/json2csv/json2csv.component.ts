@@ -10,10 +10,13 @@ export class Json2csvComponent implements OnInit {
   public textArea1: string;
   public textArea2: string;
 
+  columnDefs = [];
+  rowData = [];
+
   constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.gerarTabela();
+
   }
 
   jsonCSV() {
@@ -66,8 +69,8 @@ export class Json2csvComponent implements OnInit {
         vetValores.push(linha); // Adiciona a linha formatada a um array
       }
     }
-
     this.inserirTextArea(validador, vetValores);
+    this.gerarTabela(validador, jsonVal);
   }
 
   inserirTextArea(coluna, valores) {
@@ -142,22 +145,24 @@ export class Json2csvComponent implements OnInit {
     }
 
     this.inserirTextArea(vetColunaFormatado, vetLinha);
+    this.gerarTabela(vetColunaFormatado, jsonVal);
   }
 
-  gerarTabela(){
-    var tabela = document.createElement("table");
-    var cabecalho = document.createElement("thead");
-    var corpo = document.createElement("tbody");
-    
-    tabela.appendChild(cabecalho);
-    tabela.appendChild(corpo);
-    
-    document.getElementById("tabela").appendChild(tabela);
+  gerarTabela(coluna, linhas) {
+    let vetColuna = [];
+    for (let i = 0; i < coluna.length; i++) {
+      vetColuna.push({ 'field': coluna[i] });
+    }
+
+    this.columnDefs = vetColuna;
+    this.rowData = linhas;
   }
 
   Limpar() {
     this.textArea1 = "";
     this.textArea2 = "";
+    this.columnDefs =  [];
+    this.rowData  = [];
   }
 
 }
